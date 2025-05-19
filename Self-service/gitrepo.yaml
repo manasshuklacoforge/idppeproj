@@ -1,0 +1,56 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+# some metadata about the template itself
+metadata:
+  name: Workflows-Quickstart
+  title: Provision a New Application Pattern
+  description: Creates a new GitHub repository according to standardized application patterns
+spec:
+  owner: TeamA
+  type: service
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: Fill in the repo details
+      required:
+        - github_repo_name
+        - github_repo_description
+        - github_repo_owner
+      properties:
+        github_repo_name:
+          title: Repository Location
+          type: string
+          description: Name the new repository that you want to create
+        github_repo_description:
+          title: Description of the app being scaffolded
+          type: string
+          description: Description of the app being scaffolded
+        github_repo_owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken       
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: trigger
+      name: Provision a New Application Pattern
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://workshop.harness.io/ng/account/IFG41DWvSnaRLOVNB2uesg/module/idp-admin/orgs/idp/projects/SelfService_Onboarding/pipelines/OnboardAppPipeline/pipeline-studio?storeType=INLINE"
+        inputset:
+          github_repo_name: ${{ parameters.github_repo_name }}
+          github_repo_description: ${{ parameters.github_repo_description }}
+          github_repo_owner: ${{ parameters.github_repo_owner }}
+        apikey: ${{ parameters.token }}
+    # The final step is to register our new component in the catalog.
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}

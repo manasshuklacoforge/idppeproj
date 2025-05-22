@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+  subscription_id = "a327a41f-a5e9-458f-b5bb-0dc87483eb85"
+}
 # Create a resource group
 resource "idppeproj_resource_group" "example" {
   name     = "idppeproj-resource-group"

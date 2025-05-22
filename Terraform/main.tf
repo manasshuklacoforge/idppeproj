@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "example" {
 
 # Create a storage account
 resource "azurerm_storage_account" "example" {
-  name                = "sa_idppeproj"
+  name                = "saidppeproj"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   account_kind        = "StorageV2" # Or "BlobStorage", "FileStorage", etc.

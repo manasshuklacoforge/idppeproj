@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "example" {
   name                = "mystorageaccount123"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
-  account_kind        = "StandardLRS"
+  account_kind        = "StorageV2" # Or "BlobStorage", "FileStorage", etc.
   account_replication_type = "LRS"  # Or "GRS", "ZRS", etc.
   account_tier             = "Standard"
   }

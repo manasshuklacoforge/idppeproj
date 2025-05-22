@@ -9,9 +9,7 @@ terraform {
 
 # Configure the Azure Provider
 provider "azurerm" {
-  feature {
-    storage_account_enable_public_access_by_default = false
-  }
+  feature {}
 }
 
 # Create a resource group

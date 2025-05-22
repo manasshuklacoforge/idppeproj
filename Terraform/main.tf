@@ -26,7 +26,7 @@ resource "azurerm_storage_account" "example" {
   location            = azurerm_resource_group.example.location
   account_kind        = "StandardLRS"
   account_replication_type = "LRS"  # Or "GRS", "ZRS", etc.
-  account_tier             = "Premium"
+  account_tier             = "Standard"
   }
   
 

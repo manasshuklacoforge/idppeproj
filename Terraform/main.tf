@@ -10,7 +10,6 @@ resource "azurerm_storage_account" "example" {
   location                 = idppeproj_resource_group.example.location
   account_kind             = "StorageV2" # Or "BlobStorage", "FileStorage", etc.
   account_replication_type = "LRS"  # Or "GRS", "ZRS", etc.
-  
   }
   
-}
+

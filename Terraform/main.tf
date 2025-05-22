@@ -15,13 +15,13 @@ provider "azurerm" {
 
 # Create a resource group
 resource "azurerm_resource_group" "example" {
-  name     = "example-rg"
+  name     = "idppeproj"
   location = "EastUS"
 }
 
 # Create a storage account
 resource "azurerm_storage_account" "example" {
-  name                = "mystorageaccount123"
+  name                = "sa_idppeproj"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   account_kind        = "StorageV2" # Or "BlobStorage", "FileStorage", etc.

@@ -21,11 +21,11 @@ spec:
           type: string
           description: Your RG will be created/destroyed with this name
         # This field is hidden but needed to authenticate the request to trigger the pipeline
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: !deaL0ndon
-          ui:field: HarnessAuthToken
+        #token:
+          #title: Harness Token
+          #type: string
+          #ui:widget: !deaL0ndon
+          #ui:field: HarnessAuthToken
   steps:
     - id: trigger
       name: Bootstrapping your new service

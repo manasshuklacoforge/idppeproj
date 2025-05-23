@@ -34,7 +34,7 @@ spec:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
         inputset:
           resourcegroup_name: ${{ parameters.resourcegroup_name }}
-          apikey: ${{ parameters.token }}
+          # apikey: ${{ parameters.token }}
   output:
     links:
       - title: Pipeline Details

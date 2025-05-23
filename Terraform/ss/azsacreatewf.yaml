@@ -1,0 +1,41 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: AZStorageaccount
+  title: Create a new service
+  description: A Workflow to create a new service
+  tags:
+    - nextjs
+    - react
+    - javascript
+spec:
+  owner: cims@company.com
+  type: service
+  parameters:
+    - title: Service Details
+      required:
+        - resourcegroup_name
+      properties:
+        resourcegroup_name:
+          title: Name of your RG
+          type: string
+          description: Your RG will be created/destroyed with this name
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Bootstrapping your new service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: ${{ parameters.resourcegroup_name }}
+          apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}

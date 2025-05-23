@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: AZStorageaccount
-  title: Create a new service
+  title: Azure Storage account creation service
   description: A Workflow to create a new service
   tags:
     - nextjs

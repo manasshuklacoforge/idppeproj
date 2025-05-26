@@ -24,7 +24,7 @@ spec:
         token:
           title: Harness Token
           type: string
-          ui:widget: !deaL0ndon
+          ui:widget: password
           ui:field: HarnessAuthToken
   steps:
     - id: trigger

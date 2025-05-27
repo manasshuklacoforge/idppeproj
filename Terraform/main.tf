@@ -15,7 +15,7 @@ provider "azurerm" {
 
 # Create a resource group
 resource "azurerm_resource_group" "example" {
-  name     = "idppeproj"
+  name     = var.resourcegroup_name
   location = "EastUS"
 }
 

@@ -11,7 +11,7 @@ metadata:
     - java
   links:
     - url: http://4.156.31.217
-      title: Admin Dashboard
+      title: Store-Front Applictaion
       icon: dashboard
       type: admin-dashboard
 spec:

@@ -1,0 +1,9 @@
+site_name: 'Store-front Documentation'
+repo_url: https://github.com/your_org/your_repo
+edit_uri: url to your index.md
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core

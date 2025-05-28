@@ -1,36 +1,19 @@
-# Welcome!
+ArgoCD Example Apps
+This repository contains example applications for demoing ArgoCD functionality. Feel free to register this repository to your ArgoCD instance, or fork this repo and push your own commits to explore ArgoCD and GitOps!
 
-This is a basic example of documentation. It is intended to showcase some of the
-features that TechDocs provides out of the box.
-
-## Basic Markdown
-
-Headings:
-
-# h1
-
-## h2
-
-### h3
-
-#### h4
-
-##### h5
-
-###### h6
-
-Here is a bulleted list:
-
-- Item one
-- Item two
-- Item Three
-
-Check out the [Markdown Guide](https://www.markdownguide.org/) to learn more about how to
-simply create documentation.
-
-You can also learn more about how to configure and set up this documentation in Backstage,
-[read the TechDocs Overview](https://backstage.io/docs/features/techdocs/).
-
+Application	Description
+guestbook	A hello word guestbook app as plain YAML
+helm-guestbook	The guestbook app as a Helm chart
+jsonnet-guestbook	The guestbook app as a raw jsonnet
+jsonnet-guestbook-tla	The guestbook app as a raw jsonnet with support for top level arguments
+kustomize-guestbook	The guestbook app as a Kustomize 2 app
+pre-post-sync	Demonstrates Argo CD PreSync and PostSync hooks
+sync-waves	Demonstrates Argo CD sync waves with hooks
+helm-dependency	Demonstrates how to customize an OTS (off-the-shelf) helm chart from an upstream repo
+sock-shop	A microservices demo app (https://microservices-demo.github.io)
+plugins	Apps which demonstrate config management plugins usage
+blue-green	Demonstrates how to implement blue-green deployment using Argo Rollouts
+apps	An app composed of other apps
 ## Table example
 
 While this documentation isn't comprehensive, in the future it should cover the following

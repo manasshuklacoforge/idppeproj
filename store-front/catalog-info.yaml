@@ -18,6 +18,10 @@ metadata:
       title: Store-Front Application Dashboard
       icon: dashboard
       type: admin-dashboard
+    - url: https://github.com/Rafa-Nada/azure-strore-front.git
+      title: Store-Front Application GH Repo
+      icon: dashboard
+      type: admin-dashboard
 spec:
   type: service
   lifecycle: production

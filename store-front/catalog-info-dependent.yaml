@@ -41,10 +41,10 @@ spec:
   type: service
   owner: Manas Shukla
   lifecycle: Production
-  ##consumesApis:
-    ##- spotify
-  ##providesApis:
-    ##- petstore
+  consumesApis:
+    - spotify
+  providesApis:
+    - petstore
   dependsOn:
     - component:default/store-front-service
   system: project-coforge-idp

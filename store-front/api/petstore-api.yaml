@@ -16,7 +16,7 @@ metadata:
       icon: code
 spec:
   type: openapi
-  lifecycle: dev
-  owner: TeamA
+  lifecycle: production
+  owner: Manas Shukla
   definition:
     $text: ./petstore.oas.yaml

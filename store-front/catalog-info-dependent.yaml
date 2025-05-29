@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: order-service
+  name: Order-service
   description: |
     Order Service dependent on store-front service.
   links:

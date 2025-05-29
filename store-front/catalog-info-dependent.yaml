@@ -1,12 +1,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Order-service
-  description: |
-    Order Service dependent on store-front service.
+  name: order-front-service
+  description: Service is dependent on Store-front service
+  tags:
+    - java
   links:
-    - title: Order-service
-      url: http://harness.io
+    - title: store-front-service
+      url: http://4.156.31.217
   annotations:
     github.com/project-slug: harnessworkshop/idp-workshop
     backstage.io/techdocs-ref: dir:../
@@ -37,7 +38,7 @@ metadata:
     #jira/project-key: IDP
     ## Jira plugin - End
   tags:
-    - Orderservice
+    - java
 spec:
   type: service
   owner: Manas Shukla

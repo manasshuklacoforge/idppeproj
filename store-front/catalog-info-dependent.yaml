@@ -1,9 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: store-front-service-dependency
+  name: order-service
   description: |
-    store-front service dependency.
+    Order Service dependent on store-front service.
   links:
     - title: Order-service
       url: http://harness.io

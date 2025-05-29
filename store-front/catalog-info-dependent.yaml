@@ -37,8 +37,6 @@ metadata:
     ## Jira plugin - Start
     #jira/project-key: IDP
     ## Jira plugin - End
-  tags:
-    - java
 spec:
   type: service
   owner: Manas Shukla

@@ -48,4 +48,4 @@ spec:
     ##- petstore
   dependsOn:
     - component:default/store-front-service
-#  system: yournamehere-system
+  system: project-coforge-idp

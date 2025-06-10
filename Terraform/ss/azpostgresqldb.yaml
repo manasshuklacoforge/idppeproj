@@ -42,17 +42,17 @@ spec:
                 - Existing Service
             uniqueItems: true
             ui:widget: checkboxes
-          environment:
-            type: string
-            ui:field: SelectFieldFromApi
-            ui:options:
-              title: Choose the environment
-              description: Pick the environment where you want to deploy
-              placeholder: "Choose a environment"
-              allowArbitraryValues: true
-              path: proxy/harness-api-endpoint/ng/api/environmentsV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}
-              valueSelector: 'environment.name'
-              arraySelector: 'data.content'
+         environment:
+           type: string
+           ui:field: SelectFieldFromApi
+           ui:options:
+             title: Choose the environment
+             description: Pick the environment where you want to deploy
+             placeholder: "Choose a environment"
+             allowArbitraryValues: true
+             path: proxy/harness-api-endpoint/ng/api/environmentsV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}
+             valueSelector: 'environment.name'
+             arraySelector: 'data.content'
           infrastructure:
             type: string
             ui:field: SelectFieldFromApi

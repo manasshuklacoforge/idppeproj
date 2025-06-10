@@ -32,17 +32,16 @@ spec:
         - environment
         - infrastructure
       properties:
-        service:
-          type: string
-          ui:field: SelectFieldFromApi
-          ui:options:
-            title: Choose the service
-            description: Pick one of the service you want to deploy
-            placeholder: "Choose a service"
-            allowArbitraryValues: true
-            path: proxy/harness-api-endpoint/ng/api/servicesV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}&includeAllServicesAccessibleAtScope=true
-            valueSelector: 'service.name'
-            arraySelector: 'data.content'
+         service:
+            title: Select the type of service
+            type: array
+            items:
+              type: string
+              enum:
+                - New Service 
+                - Existing Service
+            uniqueItems: true
+            ui:widget: checkboxes
           environment:
             type: string
             ui:field: SelectFieldFromApi

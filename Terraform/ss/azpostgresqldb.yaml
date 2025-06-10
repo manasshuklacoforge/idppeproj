@@ -43,16 +43,18 @@ spec:
             uniqueItems: true
             ui:widget: checkboxes
          environment:
+           title: Choose the environment
+           description: Pick the environment where you want to deploy
            type: string
-           ui:field: SelectFieldFromApi
-           ui:options:
-             title: Choose the environment
-             description: Pick the environment where you want to deploy
-             placeholder: "Choose a environment"
-             allowArbitraryValues: true
-             path: proxy/harness-api-endpoint/ng/api/environmentsV2?page=0&size=100&accountIdentifier=ACCOUNT_ID&orgIdentifier={{parameters.organizationId}}&projectIdentifier={{parameters.projectId}}
-             valueSelector: 'environment.name'
-             arraySelector: 'data.content'
+           default: Dev
+           enum:
+             - Dev
+             - Staging
+             - Production
+           enumNames:
+             - 'Dev Environment'
+             - 'Staging Environment'
+             - 'Production Environment' 
          infrastructure:
            type: string
            ui:field: SelectFieldFromApi

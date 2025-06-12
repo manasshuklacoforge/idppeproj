@@ -1,11 +1,11 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: example-all-of-template
-  title: Example AllOf Template
+  name: AZ-res-env-template
+  title: Azure Resource environment template
   description: A template to display the conditional allOf
 spec:
-  owner: owner@company.com
+  owner: cims@company.com
   type: service
   parameters:
     - title: Infrastructure Provisioning

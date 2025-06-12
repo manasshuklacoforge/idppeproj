@@ -66,11 +66,19 @@ spec:
               type: string
               description: Name of the resource that you want to provision
               enum:
-                - s3
-                - vpc
-                - sns
-                - glue
-                - sqs
+                - Amazon EC2
+                - AWS Lambda
+                - Amazon ECS
+                - Amazon EKS
+                - Azure App Service
+                - Azure Virtual Machines
+                - Azure Functions
+                - Azure Container Instances
+                - Azure Kubernetes Service
+                - Google App Engine
+                - Google Compute Engine
+                - Google Cloud Functions
+                - Google Kubernetes Engine(GKE)
           required:
             - resource_type
           dependencies:

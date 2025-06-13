@@ -92,12 +92,6 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
   steps:
-    - id: fetch
-      name: Fetch Webapp
-      action: fetch:template
-      input:
-        url: ${{ parameters.path if parameters.imagepath else '/webapp' }}
-
     - id: development_step
       name: Only Dev Environment
       if: ${{ parameters.environment === 'staging' or parameters.resource_type === 'dev' }}

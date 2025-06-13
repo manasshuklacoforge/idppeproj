@@ -94,7 +94,7 @@ spec:
   steps:
     - id: development_step
       name: Only Dev Environment
-      if: ${{ parameters.environment === 'staging' or parameters.resource_type === 'dev' }}
+      if: ${{ parameters.environment === 'staging' or parameters.environment === 'dev' }}
       action: trigger:harness-custom-pipeline
       input:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/Functionapp/pipeline-studio/?storeType=INLINE"
@@ -102,7 +102,7 @@ spec:
 
     - id: production_step
       name: Only Production Environment
-      if: ${{ parameters.environment === 'prod' and parameters.environment === 'Azure App Service' }}
+      if: ${{ parameters.environment === 'prod' and parameters.resource_type === 'Azure App Service' }}
       action: trigger:harness-custom-pipeline
       input:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/azureprod/pipeline-studio/?storeType=INLINE"

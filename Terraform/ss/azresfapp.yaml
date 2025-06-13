@@ -83,8 +83,9 @@ spec:
                 - Google Kubernetes Engine(GKE)
         imagepath:
           title: Path
-          type: object
+          type: string
           description: Enter the path to fetch. Default to '/webapp'
+
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token

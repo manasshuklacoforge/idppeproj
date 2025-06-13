@@ -94,18 +94,11 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
   steps:
-    - id: display-fields
-      name: Display Selected Fields
-      action: debug:log
+    - id: fetch
+      name: Fetch Webapp
+      action: fetch:template
       input:
-        message: |
-          You have provided the following field:
-          {% if parameters.lorem %}
-          - Lorem: {{ parameters.lorem }}
-          {% endif %}
-          {% if parameters.ipsum %}
-          - Ipsum: {{ parameters.ipsum }}
-          {% endif %}
+        url: ${{ parameters.path if parameters.imagepath else '/root' }}
     - id: trigger
       name: Bootstrapping your new service
       action: trigger:harness-custom-pipeline

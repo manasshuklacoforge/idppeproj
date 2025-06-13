@@ -18,7 +18,7 @@ spec:
         - project_name
         - project_description
         - project_type
-        - environment_type
+        - environment
         - owner
         - infracomponent
         - imagepath
@@ -51,7 +51,7 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        environment_type:
+        environment:
           title: Environment Type
           type: string
           description: Name of the environment where you want to provision a resource
@@ -85,7 +85,6 @@ spec:
           title: Path
           type: string
           description: Enter the path to fetch. Default to '/webapp'
-
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token
@@ -97,15 +96,24 @@ spec:
       name: Fetch Webapp
       action: fetch:template
       input:
-        url: ${{ parameters.path if parameters.imagepath else '/root' }}
-    - id: trigger
-      name: Bootstrapping your new service
+        url: ${{ parameters.path if parameters.imagepath else '/webapp' }}
+        
+    - id: development_step
+      name: Only Dev Environment
+      if: ${{ parameters.environment === 'staging' or parameters.resource_type === 'dev' }}
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
-        inputset:
-          resourcegroup_name: ${{ parameters.resourcegroup_name }}
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZFunctionapp/pipeline-studio/?storeType=INLINE"
         apikey: ${{ parameters.token }}
+
+    - id: production_step
+      name: Only Production Environment
+      if: ${{ parameters.environment === 'prod' and parameters.environment === 'Azure App Service' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZFunctionapp/pipeline-studio/?storeType=INLINE"
+        apikey: ${{ parameters.token }}
+
   output:
     links:
       - title: Pipeline Details

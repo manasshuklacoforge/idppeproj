@@ -111,5 +111,6 @@ spec:
   output:
     links:
       - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+        url: ${{ steps.development_step.output.PipelineUrl }}
+        url: ${{ steps.production_step.output.PipelineUrl }}
 

@@ -97,13 +97,13 @@ spec:
       action: fetch:template
       input:
         url: ${{ parameters.path if parameters.imagepath else '/webapp' }}
-        
+
     - id: development_step
       name: Only Dev Environment
       if: ${{ parameters.environment === 'staging' or parameters.resource_type === 'dev' }}
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZFunctionapp/pipeline-studio/?storeType=INLINE"
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/Functionapp/pipeline-studio/?storeType=INLINE"
         apikey: ${{ parameters.token }}
 
     - id: production_step
@@ -111,7 +111,7 @@ spec:
       if: ${{ parameters.environment === 'prod' and parameters.environment === 'Azure App Service' }}
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/iacm/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZFunctionapp/pipeline-studio/?storeType=INLINE"
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/azureprod/pipeline-studio/?storeType=INLINE"
         apikey: ${{ parameters.token }}
 
   output:

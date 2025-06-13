@@ -81,11 +81,9 @@ spec:
                 - Google Compute Engine
                 - Google Cloud Functions
                 - Google Kubernetes Engine(GKE)
-            Operationtype:
-              $ref: "#/imagepath"
         imagepath:
           title: Path
-          type: string
+          type: object
           description: Enter the path to fetch. Default to '/webapp'
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:

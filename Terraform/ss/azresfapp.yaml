@@ -20,6 +20,8 @@ spec:
         - project_type
         - environment_type
         - owner
+        - infracomponent
+        - imagepath
       properties:
         project_name:
           title: Harness Project Name
@@ -56,7 +58,7 @@ spec:
           enum:
             - dev
             - staging
-            - prod
+            - prod 
         infracomponent:
           title: Infra Component
           type: object
@@ -79,32 +81,12 @@ spec:
                 - Google Compute Engine
                 - Google Cloud Functions
                 - Google Kubernetes Engine(GKE)
-          required:
-            - resource_type
-          dependencies:
-            resource_type:
-              allOf:
-                - properties:
-                    resource_type:
-                      enum:
-                        - s3
-                        - vpc
-                  required:
-                    - resource_type
-                - properties:
-                    Operationtype:
-                      $ref: "#/myregion/operation"
-      myregion:
-        operation:
-          title: Region
-          type: object
-          properties:
-            ChooseRegion:
-              type: string
-              enum:
-                - Region A
-                - Region B
-                - Region C
+            Operationtype:
+              $ref: "#/imagepath"
+        imagepath:
+          title: Path
+          type: string
+          description: Enter the path to fetch. Default to '/webapp'
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token
@@ -112,6 +94,18 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
   steps:
+    - id: display-fields
+      name: Display Selected Fields
+      action: debug:log
+      input:
+        message: |
+          You have provided the following field:
+          {% if parameters.lorem %}
+          - Lorem: {{ parameters.lorem }}
+          {% endif %}
+          {% if parameters.ipsum %}
+          - Ipsum: {{ parameters.ipsum }}
+          {% endif %}
     - id: trigger
       name: Bootstrapping your new service
       action: trigger:harness-custom-pipeline

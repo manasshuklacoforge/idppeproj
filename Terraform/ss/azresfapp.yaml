@@ -61,7 +61,7 @@ spec:
             - prod 
         infracomponent:
           title: Infra Component
-          type: object
+          type: string
           description: Name of the resource where you want to deploy your application
           enum:
             - Amazon EC2

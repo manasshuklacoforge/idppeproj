@@ -1,13 +1,11 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: AZFunctionapp
-  title: Azure Function app creation service
-  description: A Workflow to create a new Azure Function app service
+  name: AZInfraDeployment
+  title: Template to create resources in MS Azure
+  description: A Workflow to create a new Azure Resources
   tags:
-    - nextjs
-    - react
-    - javascript
+    - cims
 spec:
   owner: cims@company.com
   type: service
@@ -17,11 +15,9 @@ spec:
       required:
         - project_name
         - project_description
-        - project_type
         - environment
         - owner
         - infracomponent
-        - imagepath
       properties:
         project_name:
           title: Harness Project Name
@@ -33,24 +29,13 @@ spec:
           title: Description of the project
           type: string
           description: Description will be used to record brief information about the project
-        project_type:
-          title: Select the type of service
-          type: array
-          items:
-            type: string
-            enum:
-              - Web Application
-              - Data Processing
-              - API Service
-          uniqueItems: true
-          ui:widget: checkboxes
         owner:
           title: Choose an Owner for the Service
           type: string
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Group
+              - User
         environment:
           title: Environment Type
           type: string
@@ -64,23 +49,9 @@ spec:
           type: string
           description: Name of the resource where you want to deploy your application
           enum:
-            - Amazon EC2
-            - AWS Lambda
-            - Amazon ECS
-            - Amazon EKS
-            - Azure App Service
-            - Azure Virtual Machines
-            - Azure Functions
-            - Azure Container Instances
-            - Azure Kubernetes Service
-            - Google App Engine
-            - Google Compute Engine
-            - Google Cloud Functions
-            - Google Kubernetes Engine(GKE)
-        imagepath:
-          title: Path
-          type: string
-          description: Enter the path to fetch. Default to '/webapp'
+            - Azure Function App
+            - Azure PostgreDB
+            - Azure StorageAcct
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token

@@ -1,0 +1,75 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: AZAppDeployment
+  title: Template to deploy applications 
+  description: A Workflow to deploy teh pre-build applications
+  tags:
+    - cims
+spec:
+  owner: cims@company.com
+  type: service
+  parameters:
+    - title: Infrastructure Provisioning
+      type: object
+      required:
+        - project_name
+        - project_description
+        - project_type
+        - owner
+        - imagepath
+      properties:
+        project_name:
+          title: Harness Project Name
+          description: Select the Harness Project Name
+          type: string
+          ui:field: HarnessProjectPicker
+          ui:autofocus: true
+        project_description:
+          title: Description of the project
+          type: string
+          description: Description will be used to record brief information about the project
+        project_type:
+          title: Select the type of service
+          type: array
+          items:
+            type: string
+            enum:
+              - Web Application
+              - Data Processing
+              - API Service
+          uniqueItems: true
+          ui:widget: checkboxes
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        imagepath:
+          title: Path
+          type: string
+          description: Enter the Build image path to fetch the application build image. Default to '/webapp'
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: Deployment_step
+      name: Application Deployment in Azure WebApp
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/azureprod/pipeline-studio/?storeType=INLINE"
+        inputset:
+          build_image_path: ${{ parameters.imagepath }}
+        apikey: ${{ parameters.token }}
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.Deployment_step.output.PipelineUrl }}
+      - title: Application URL
+        url: ${{ steps.Deployment_step.output }}

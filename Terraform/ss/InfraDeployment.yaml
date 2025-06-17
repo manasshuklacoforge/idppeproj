@@ -146,7 +146,7 @@ spec:
       input:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
         inputset:
-          resourcegroup_name: prod
+          resourcegroup_name: prod_pe_rg
         apikey: ${{ parameters.token }}
 
   output:

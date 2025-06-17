@@ -152,8 +152,10 @@ spec:
   output:
     links:
       - title: Pipeline Details
-        url: ${{ steps.development_Azure_Function_App.output || steps.development_Azure_PostgreDB.output || steps.development_Azure_StorageAcct.output }}
+        url: ${{ steps.development_Azure_Function_App.output || steps.development_Azure_PostgreDB.output || steps.development_Azure_StorageAcct.output || 
+               steps.staging_Azure_Function_App.output || steps.staging_Azure_PostgreDB.output || steps.staging_Azure_StorageAcct.output || 
+               steps.production_Azure_Function_App.output || steps.production_Azure_PostgreDB.output || steps.production_Azure_StorageAcct.output }}
         # url: ${{ steps.staging_Azure_Function_App.output || steps.staging_Azure_PostgreDB.output || steps.staging_Azure_StorageAcct.output }}
-        url: ${{ steps.production_Azure_Function_App.output || steps.production_Azure_PostgreDB.output || steps.production_Azure_StorageAcct.output }}
+        # url: ${{ steps.production_Azure_Function_App.output || steps.production_Azure_PostgreDB.output || steps.production_Azure_StorageAcct.output }}
         
         

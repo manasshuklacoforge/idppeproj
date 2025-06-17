@@ -59,8 +59,8 @@ spec:
           ui:widget: password
           ui:field: HarnessAuthToken
   steps:
-    - id: development_step
-      name: Only Dev Environment
+    - id: development_Azure_Function_App
+      name: Only Dev Environment for Azure Function App
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure Function App' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -69,6 +69,8 @@ spec:
           resourcegroup_name: dev
         apikey: ${{ parameters.token }}
 
+    - id: development_Azure_PostgreDB
+      name: Only Dev Environment for Azure PostgreDB
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -77,6 +79,8 @@ spec:
           resourcegroup_name: dev
         apikey: ${{ parameters.token }}
 
+    - id: development_Azure_StorageAcct
+      name: Only Dev Environment for Azure Storage Account
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:

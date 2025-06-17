@@ -60,7 +60,7 @@ spec:
           ui:field: HarnessAuthToken
   steps:
     - id: development_Azure_Function_App
-      name: Only Dev Environment for Azure Function App
+      name: Dev - Azure Function App
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure Function App' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -70,7 +70,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: development_Azure_PostgreDB
-      name: Only Dev Environment for Azure PostgreDB
+      name: Dev -  Azure PostgreDB
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -80,7 +80,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: development_Azure_StorageAcct
-      name: Only Dev Environment for Azure Storage Account
+      name: Dev - Azure Storage Account
       if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -90,7 +90,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: staging_Azure_Function_App
-      name: Only Staging Environment for Azure Function App
+      name: Staging - Azure Function App
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure Function App' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -100,7 +100,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: staging_Azure_PostgreDB
-      name: Only Staging Environment for Azure PostgreDB
+      name: Staging - Azure PostgreDB
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -110,7 +110,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: staging_Azure_StorageAcct
-      name: Only Staging Environment for Azure Storage Account
+      name: Staging - Azure Storage Account
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -120,7 +120,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: production_Azure_Function_App
-      name: Only Production Environment for Azure Function App
+      name: Production - Azure Function App
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure App Service' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -130,7 +130,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: production_Azure_PostgreDB
-      name: Only Production Environment for Azure PostgreDB
+      name: Production - Azure PostgreDB
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -140,7 +140,7 @@ spec:
         apikey: ${{ parameters.token }}
 
     - id: production_Azure_StorageAcct
-      name: Only Production Environment for Azure Storage Account
+      name: Production - Azure Storage Account
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:

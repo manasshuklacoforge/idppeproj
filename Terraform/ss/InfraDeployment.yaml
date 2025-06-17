@@ -89,8 +89,8 @@ spec:
           resourcegroup_name: dev
         apikey: ${{ parameters.token }}
 
-    - id: staging_step
-      name: Only Staging Environment
+    - id: staging_Azure_Function_App
+      name: Only Staging Environment for Azure Function App
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure Function App' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -99,6 +99,8 @@ spec:
           resourcegroup_name: staging
         apikey: ${{ parameters.token }}
 
+    - id: staging_Azure_PostgreDB
+      name: Only Staging Environment for Azure PostgreDB
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -107,6 +109,8 @@ spec:
           resourcegroup_name: staging
         apikey: ${{ parameters.token }}
 
+    - id: staging_Azure_StorageAcct
+      name: Only Staging Environment for Azure Storage Account
       if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -115,8 +119,8 @@ spec:
           resourcegroup_name: staging
         apikey: ${{ parameters.token }}
 
-    - id: production_step
-      name: Only Production Environment
+    - id: production_Azure_Function_App
+      name: Only Production Environment for Azure Function App
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure App Service' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -125,6 +129,8 @@ spec:
           resourcegroup_name: prod
         apikey: ${{ parameters.token }}
 
+    - id: production_Azure_PostgreDB
+      name: Only Production Environment for Azure PostgreDB
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure PostgreDB' }}
       action: trigger:harness-custom-pipeline
       input:
@@ -133,6 +139,8 @@ spec:
           resourcegroup_name: prod
         apikey: ${{ parameters.token }}
 
+    - id: production_Azure_StorageAcct
+      name: Only Production Environment for Azure Storage Account
       if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure StorageAcct' }}
       action: trigger:harness-custom-pipeline
       input:

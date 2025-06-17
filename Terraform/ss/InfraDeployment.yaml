@@ -61,12 +61,54 @@ spec:
   steps:
     - id: development_step
       name: Only Dev Environment
-      if: ${{ parameters.environment === 'staging' or parameters.environment === 'dev' }}
+      if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure Function App' }}
       action: trigger:harness-custom-pipeline
       input:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/Functionapp/pipeline-studio/?storeType=INLINE"
         inputset:
-          resourcegroup_name: ${{ parameters.imagepath }}
+          resourcegroup_name: dev
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure PostgreDB' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/postgredb/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: dev
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'dev' and parameters.infracomponent === 'Azure StorageAcct' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: dev
+        apikey: ${{ parameters.token }}
+
+    - id: staging_step
+      name: Only Staging Environment
+      if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure Function App' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/Functionapp/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: staging
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure PostgreDB' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/postgredb/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: staging
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'staging' and parameters.infracomponent === 'Azure StorageAcct' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: staging
         apikey: ${{ parameters.token }}
 
     - id: production_step
@@ -76,7 +118,23 @@ spec:
       input:
         url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/azureprod/pipeline-studio/?storeType=INLINE"
         inputset:
-          resourcegroup_name: ${{ parameters.imagepath }}
+          resourcegroup_name: prod
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure PostgreDB' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/postgredb/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: prod
+        apikey: ${{ parameters.token }}
+
+      if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure StorageAcct' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/AZStorageaccount/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: prod
         apikey: ${{ parameters.token }}
 
   output:

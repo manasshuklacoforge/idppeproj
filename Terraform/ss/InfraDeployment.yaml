@@ -1,0 +1,115 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: AZFunctionapp
+  title: Azure Function app creation service
+  description: A Workflow to create a new Azure Function app service
+  tags:
+    - nextjs
+    - react
+    - javascript
+spec:
+  owner: cims@company.com
+  type: service
+  parameters:
+    - title: Infrastructure Provisioning
+      type: object
+      required:
+        - project_name
+        - project_description
+        - project_type
+        - environment
+        - owner
+        - infracomponent
+        - imagepath
+      properties:
+        project_name:
+          title: Harness Project Name
+          description: Select the Harness Project Name
+          type: string
+          ui:field: HarnessProjectPicker
+          ui:autofocus: true
+        project_description:
+          title: Description of the project
+          type: string
+          description: Description will be used to record brief information about the project
+        project_type:
+          title: Select the type of service
+          type: array
+          items:
+            type: string
+            enum:
+              - Web Application
+              - Data Processing
+              - API Service
+          uniqueItems: true
+          ui:widget: checkboxes
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        environment:
+          title: Environment Type
+          type: string
+          description: Name of the environment where you want to provision a resource
+          enum:
+            - dev
+            - staging
+            - prod 
+        infracomponent:
+          title: Infra Component
+          type: string
+          description: Name of the resource where you want to deploy your application
+          enum:
+            - Amazon EC2
+            - AWS Lambda
+            - Amazon ECS
+            - Amazon EKS
+            - Azure App Service
+            - Azure Virtual Machines
+            - Azure Functions
+            - Azure Container Instances
+            - Azure Kubernetes Service
+            - Google App Engine
+            - Google Compute Engine
+            - Google Cloud Functions
+            - Google Kubernetes Engine(GKE)
+        imagepath:
+          title: Path
+          type: string
+          description: Enter the path to fetch. Default to '/webapp'
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: development_step
+      name: Only Dev Environment
+      if: ${{ parameters.environment === 'staging' or parameters.environment === 'dev' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/Functionapp/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: ${{ parameters.imagepath }}
+        apikey: ${{ parameters.token }}
+
+    - id: production_step
+      name: Only Production Environment
+      if: ${{ parameters.environment === 'prod' and parameters.infracomponent === 'Azure App Service' }}
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/8Xl8tQSaSeyvtccXETil_Q/module/idp-admin/orgs/CoforgeCIMSPE/projects/CoforgeIDPPE/pipelines/azureprod/pipeline-studio/?storeType=INLINE"
+        inputset:
+          resourcegroup_name: ${{ parameters.imagepath }}
+        apikey: ${{ parameters.token }}
+
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.development_step.output.PipelineUrl }}
+        url: ${{ steps.production_step.output.PipelineUrl }}

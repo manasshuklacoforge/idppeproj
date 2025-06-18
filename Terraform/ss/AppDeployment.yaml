@@ -17,7 +17,7 @@ spec:
         - project_description
         - project_type
         - owner
-        - imagepath
+        - imagename
       properties:
         project_name:
           title: Harness Project Name
@@ -47,10 +47,10 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        imagepath:
+        imagename:
           title: Path
           type: string
-          description: Enter the Build image path to fetch the application build image. Default to '/webapp'
+          description: Enter the name of Build image path to deploy the application. Default to 'ghost'
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token

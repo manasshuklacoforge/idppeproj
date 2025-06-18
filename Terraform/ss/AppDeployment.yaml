@@ -48,9 +48,9 @@ spec:
             allowedKinds:
               - Group
         imagename:
-          title: Path
+          title: Name of docker image
           type: string
-          description: Enter the name of Build image path to deploy the application. Default to 'ghost'
+          description: Enter the name of Build image name to deploy the application. Default to 'ghost'
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token
